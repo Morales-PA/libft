@@ -6,16 +6,18 @@
 /*   By: jmorales <jmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 20:17:07 by jmorales          #+#    #+#             */
-/*   Updated: 2026/09/29 20:20:16 by jmorales         ###   ########.fr       */
+/*   Updated: 2026/09/30 17:36:27 by jmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(const char *s1, const char *s2)
+#include <stddef.h>
+
+int	strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (s1[i] && s2[i] && s1[i] == s2[i])
+	while (s1[i] && s2[i] && s1[i] == s2[i] && i < n - 1)
 		i++;
 	return (s1[i] - s2[i]);
 }

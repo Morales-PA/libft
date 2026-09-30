@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmorales <jmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/29 20:22:14 by jmorales          #+#    #+#             */
-/*   Updated: 2026/09/30 17:27:42 by jmorales         ###   ########.fr       */
+/*   Created: 2026/09/30 18:51:47 by jmorales          #+#    #+#             */
+/*   Updated: 2026/09/30 19:12:50 by jmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
 #include <stddef.h>
+#include <stdlib.h>
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*tmp_s;
-	size_t	i;
+	char	*s1_temp;
+	char	*s2_temp;
+	char	*new_str;
+	int		i;
 
-	tmp_s = s;
-	i = 0;
-	while (i < n)
-	{
-		if (tmp_s[i] == c)
-			return (tmp_s + i);
-		i++;
-	}
-	return (NULL);
+	new_str = malloc(sizeof(char [sizeof(s1) + sizeof(s2)]));
+
 }

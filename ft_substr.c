@@ -6,11 +6,11 @@
 /*   By: jmorales <jmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 19:08:13 by jmorales          #+#    #+#             */
-/*   Updated: 2026/09/29 19:47:56 by jmorales         ###   ########.fr       */
+/*   Updated: 2026/09/30 18:51:11 by jmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include <stdlib.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

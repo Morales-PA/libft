@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmorales <jmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/29 20:22:14 by jmorales          #+#    #+#             */
-/*   Updated: 2026/09/30 17:27:42 by jmorales         ###   ########.fr       */
+/*   Created: 2026/09/30 19:09:54 by jmorales          #+#    #+#             */
+/*   Updated: 2026/09/30 19:28:54 by jmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
 #include <stddef.h>
-
-void	*ft_memchr(const void *s, int c, size_t n)
+#include <stdio.h>
+int main(int argc, char const *argv[])
 {
-	char	*tmp_s;
-	size_t	i;
-
-	tmp_s = s;
-	i = 0;
-	while (i < n)
-	{
-		if (tmp_s[i] == c)
-			return (tmp_s + i);
-		i++;
-	}
-	return (NULL);
+	char *s1 = "Hola";
+	printf("%lu",strlen(s1));
+	return 0;
 }

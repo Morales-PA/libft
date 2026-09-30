@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmorales <jmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/29 20:22:14 by jmorales          #+#    #+#             */
-/*   Updated: 2026/09/30 17:27:42 by jmorales         ###   ########.fr       */
+/*   Created: 2026/09/30 17:26:37 by jmorales          #+#    #+#             */
+/*   Updated: 2026/09/30 17:34:21 by jmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include <stddef.h>
 
-void	*ft_memchr(const void *s, int c, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char	*tmp_s;
-	size_t	i;
+	unsigned char	*s1_temp;
+	unsigned char	*s2_temp;
+	size_t			i;
 
-	tmp_s = s;
+	s1_temp = s1;
+	s2_temp = s2;
 	i = 0;
-	while (i < n)
-	{
-		if (tmp_s[i] == c)
-			return (tmp_s + i);
+	while (s1_temp[i] && s2_temp[i] && s1_temp[i] == s2_temp[i] && i < n - 1)
 		i++;
-	}
-	return (NULL);
+	return (s1_temp[i] - s2_temp[i]);
 }
