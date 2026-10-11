@@ -6,7 +6,7 @@
 /*   By: jmorales <jmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 20:22:14 by jmorales          #+#    #+#             */
-/*   Updated: 2026/09/30 17:27:42 by jmorales         ###   ########.fr       */
+/*   Updated: 2026/10/11 20:29:42 by jmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	char	*tmp_s;
 	size_t	i;
 
-	tmp_s = s;
+	tmp_s = (char *)s;
 	i = 0;
 	while (i < n)
 	{
