@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorales <jmorales@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juan <juan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/11 18:08:37 by jmorales          #+#    #+#             */
-/*   Updated: 2026/10/11 20:30:22 by jmorales         ###   ########.fr       */
+/*   Updated: 2026/10/15 18:32:08 by juan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int argc, char const *argv[])
+#include <stdlib.h>
+
+int	main(void)
 {
 	int		m;
 	int		n;

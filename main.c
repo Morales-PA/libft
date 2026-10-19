@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorales <jmorales@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juan <juan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/11 16:33:37 by jmorales          #+#    #+#             */
-/*   Updated: 2026/10/11 20:30:36 by jmorales         ###   ########.fr       */
+/*   Updated: 2026/10/16 14:31:00 by juan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,19 @@
 
 int	main(void)
 {
-	int	m;
-	int	n;
+	int	rows;
 	int	i;
-	int	j;
 
-	m = 5;
-	n = 5;
-	int(*a)[n] = malloc(m * n * sizeof(*a));
-	a[0][2] = 1;
+	rows = 5;
+	//int(*a)[n] = malloc(m * n * sizeof(*a));
+	char **a = malloc(rows * sizeof(*a));
+	a[0] = "Hola";
+	a[1] = "Hola2";
 	i = 0;
-	j = 0;
-	while (i < m)
+	while (a[i])
 	{
-		j = 0;
-		while (j < n)
-		{
-			printf("%d", a[i][j]);
-			j++;
-		}
-		printf("%s", "\n");
+		printf("%s", a[i]);
 		i++;
 	}
-	printf("%d", a[0][2]);
 	free(a);
 }
