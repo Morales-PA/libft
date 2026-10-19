@@ -6,38 +6,50 @@
 /*   By: jmorales <jmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 17:34:52 by jmorales          #+#    #+#             */
-/*   Updated: 2026/09/30 18:18:32 by jmorales         ###   ########.fr       */
+/*   Updated: 2026/10/19 18:29:58 by jmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
 #include <stddef.h>
+#include <stdio.h>
+
+size_t	ft_strlen(const char *c)
+{
+	size_t	i;
+
+	i = 0;
+	while (c[i])
+		i++;
+	return (i);
+}
 
 char	*strnstr(const char *big, const char *little, size_t len)
 {
-	char	*little_tmp;
-	char	*big_tmp;
-	bool	is_little_found;
 	size_t	i;
 	size_t	j;
 
-	little_tmp = little;
-	big_tmp = big;
-	is_little_found = false;
 	i = 0;
-	while (i < len - 1)
+	if (((char *)little)[0] == '\0')
+		return ((char *)big);
+	while (i < len && ((char *)big)[i])
 	{
-		if (big_tmp[i] == little_tmp[i])
+		if (((char *)big)[i] == little[0])
 		{
-			j = 1;
-			is_little_found = true;
-			while (j + i < len - 1 && is_little_found)
-				if (big_tmp[i + j] != big_tmp[i + j])
-					is_little_found = false;
+			j = 0;
+			while (((char *)big)[i + j] == ((char *)little)[j])
+				j++;
+			if (j == ft_strlen(little))
+				return ((char *)big + i);
 		}
 		i++;
 	}
-	if (!is_little_found)
-		return (NULL);
-	return (big_tmp + i);
+	return (0);
+}
+
+int	main(void)
+{
+	char	*x;
+
+	x = "Hola buenas tardes";
+	printf("%s", strnstr(x, "paco", ft_strlen(x)));
 }

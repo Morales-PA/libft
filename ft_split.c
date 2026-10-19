@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan <juan@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jmorales <jmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 20:24:46 by juan              #+#    #+#             */
-/*   Updated: 2026/10/18 15:00:09 by juan             ###   ########.fr       */
+/*   Updated: 2026/10/19 19:43:27 by jmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-char	**populate_array(int start, int end, char *s_ptr, int str_amount, char **str_array)
+char	**populate_array(int start, int end, char *s_ptr, int str_amount,
+		char **str_array)
 {
 	char	**a;
 	int		i;
@@ -21,32 +22,12 @@ char	**populate_array(int start, int end, char *s_ptr, int str_amount, char **st
 
 	a = malloc(str_amount * sizeof(*a));
 	i = 0;
+	a[i] = malloc((end - start) * sizeof(*a));
 	j = 0;
-	if (str_array == 0)
+	while (j < (end - start))
 	{
-		while (start + i < end)
-		{
-			a[0][i] = s_ptr[start + i];
-			i++; 
-		}
-	}
-	else
-	{
-		while (str_array[i])
-		{
-			while (str_array[i][j])
-			{
-				a[i][j] = str_array[i][j];
-				j++;
-			}
-			i++;
-		}
-		j = 0;
-		while (start + j < end)
-		{
-			a[i][j] = s_ptr[start + j];
-			j++;
-		}
+		a[i][j] = s_ptr[start + j];
+		j++;
 	}
 	return (a);
 }
@@ -66,17 +47,13 @@ char	**ft_split(char const *s, char c)
 		if (s[i] != c)
 		{
 			j = 1;
-			while (1)
-			{
-				if (s[i + j] == c || s[i + j] == '\0')
-					break ;
+			while (s[i + j] != c && s[i + j] != '\0')
 				j++;
-			}
+			str_array = populate_array(i, i + j, (char *)s, str_amount++,
+					str_array);
+			if (str_array == 0)
+				return (0);
 			i = i + j;
-			str_amount += 1;
-			str_array = populate_array(i, j, (char *)s, str_amount, str_array);
-			if (!str_array)
-				return	(0);
 		}
 		i++;
 	}
@@ -85,15 +62,16 @@ char	**ft_split(char const *s, char c)
 
 int	main(void)
 {
-	char	x1[] = ",Hola,buenos,dias";
+	char	x1[] = ",,d,buenos,dias";
 	char	**x;
 	int		i;
 
 	x = ft_split(x1, ',');
 	i = 0;
-	while (i < 5)
+	while (x[i])
 	{
 		printf("%s", x[i]);
+		printf("%c", '\n');
 		i++;
 	}
 	return (0);
