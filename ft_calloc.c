@@ -3,45 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorales <jmorales@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juan <juan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 18:43:35 by jmorales          #+#    #+#             */
-/*   Updated: 2026/10/19 18:31:46 by jmorales         ###   ########.fr       */
+/*   Updated: 2026/10/20 16:32:15 by juan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
+#include <stdint.h>
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	char	*temp;
 	size_t	i;
 
+	if (!nmemb || !size)
+		return (malloc(0));
+	if (nmemb > SIZE_MAX / size)
+		return (0);
 	temp = malloc(nmemb * size);
 	if (!temp)
 		return (0);
 	i = 0;
 	while (i < nmemb)
 	{
-		temp[i] = 2;
+		temp[i] = '\0';
 		i++;
 	}
 	return (temp);
-}
-
-int	main(void)
-{
-	int	*test;
-	int	i;
-
-	test = ft_calloc(10, 4);
-	i = 0;
-	while (i < 10)
-	{
-		printf("%d", test[i]);
-		i++;
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: juan <juan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 19:41:17 by jmorales          #+#    #+#             */
-/*   Updated: 2026/10/06 23:13:52 by juan             ###   ########.fr       */
+/*   Updated: 2026/10/20 19:16:34 by juan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static size_t	ft_strlen(const char *str)
 {
-	size_t	i;
+	size_t i;
 
 	i = 0;
 	while (str[i])
