@@ -6,24 +6,13 @@
 /*   By: juan <juan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 19:14:29 by juan              #+#    #+#             */
-/*   Updated: 2026/10/01 23:58:41 by juan             ###   ########.fr       */
+/*   Updated: 2026/10/21 03:25:28 by juan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdlib.h>
+#include "libft.h"
 
-size_t	ft_strlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char	*allocate_and_populate_str(char const *s1, size_t i, size_t j)
+static char	*allocate_and_populate_str(char const *s1, size_t i, size_t j)
 {
 	char	*str;
 	size_t	k;

@@ -6,21 +6,11 @@
 /*   By: juan <juan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/04 13:10:29 by juan              #+#    #+#             */
-/*   Updated: 2026/10/04 13:53:19 by juan             ###   ########.fr       */
+/*   Updated: 2026/10/21 02:43:19 by juan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-
-static size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
+#include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
@@ -42,12 +32,15 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	}
 	return (src_len + dst_len);
 }
-
+/*
 #include <stdio.h>
-int main()
+
+int	main(void)
 {
-	char s1[3] = "Ho";
-	char *s2 = "Buenas";
+	char	s1[3] = "Ho";
+	char	*s2;
+
+	s2 = "Buenas";
 	ft_strlcat(s1, s2, 100);
-	printf("%s",s1);
-}
+	printf("%s", s1);
+}*/

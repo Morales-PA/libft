@@ -6,13 +6,13 @@
 #    By: juan <juan@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/20 19:15:21 by juan              #+#    #+#              #
-#    Updated: 2026/10/20 19:15:38 by juan             ###   ########.fr        #
+#    Updated: 2026/10/21 03:43:27 by juan             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
 
-CC		= cc
+CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 AR		= ar rcs
 RM		= rm -f
@@ -39,7 +39,17 @@ SRCS	= ft_isalpha.c \
 		  ft_strnstr.c \
 		  ft_atoi.c \
 		  ft_calloc.c \
-		  ft_strdup.c
+		  ft_strdup.c \
+		  ft_substr.c \
+		  ft_strjoin.c \
+		  ft_strtrim.c \
+		  ft_itoa.c \
+		  ft_strmapi.c \
+		  ft_striteri.c \
+		  ft_putchar_fd.c \
+		  ft_putstr_fd.c \
+		  ft_putendl_fd.c \
+		  ft_putnbr_fd.c
 
 OBJS	= $(SRCS:.c=.o)
 
