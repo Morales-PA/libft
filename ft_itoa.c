@@ -6,7 +6,7 @@
 /*   By: juan <juan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 21:12:14 by juan              #+#    #+#             */
-/*   Updated: 2026/10/21 03:25:58 by juan             ###   ########.fr       */
+/*   Updated: 2026/10/26 00:39:43 by juan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,16 @@ char	*ft_itoa(int n)
 	int		str_len;
 	char	*str_n;
 
-	temp_n = n;
 	str_len = 1;
+	temp_n = n;	
 	while (temp_n / 10)
 	{
 		temp_n /= 10;
 		str_len++;
 	}
-	str_n = malloc(sizeof(char [str_len + 1]));
+	str_n = malloc(str_len * sizeof(*str_n));
 	if (!str_n)
 		return (0);
-	str_n[str_len + 1] = '\0';
 	while (str_len > 0)
 	{
 		str_n[str_len - 1] = (n % 10) + '0';
@@ -37,3 +36,9 @@ char	*ft_itoa(int n)
 	}
 	return (str_n);
 }
+/*
+int main(void)
+{
+	printf("%s",ft_itoa(2147483647));
+}
+*/

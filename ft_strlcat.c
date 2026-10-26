@@ -6,7 +6,7 @@
 /*   By: juan <juan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/04 13:10:29 by juan              #+#    #+#             */
-/*   Updated: 2026/10/21 02:43:19 by juan             ###   ########.fr       */
+/*   Updated: 2026/10/21 19:20:28 by juan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 
 int	main(void)
 {
-	char	s1[3] = "Ho";
+	char	s1[10] = "Ho";
 	char	*s2;
 
 	s2 = "Buenas";
-	ft_strlcat(s1, s2, 100);
+	ft_strlcat(s1, s2, 4);
 	printf("%s", s1);
-}*/
+}
+*/

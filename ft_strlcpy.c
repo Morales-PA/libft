@@ -6,7 +6,7 @@
 /*   By: juan <juan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 17:57:17 by jmorales          #+#    #+#             */
-/*   Updated: 2026/10/21 02:42:46 by juan             ###   ########.fr       */
+/*   Updated: 2026/10/21 17:56:53 by juan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	i = 0;
 	if (size > 0)
 	{
-		while (i < size - 1 && dst[i])
+		while (i < size - 1 && src[i])
 		{
 			dst[i] = src[i];
 			i++;
