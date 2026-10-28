@@ -6,11 +6,12 @@
 /*   By: juan <juan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 19:08:13 by jmorales          #+#    #+#             */
-/*   Updated: 2026/10/25 02:32:49 by juan             ###   ########.fr       */
+/*   Updated: 2026/10/27 12:09:07 by juan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <limits.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -18,14 +19,18 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	s_len;
 	char	*sub_str;
 
-	s_len = ft_strlen((char *)s) + 1;
-	if (s_len > len)
+	if (!s)
 		return (NULL);
-	sub_str = malloc(s_len * sizeof(*sub_str));
-	if (sub_str == NULL)
+	s_len = ft_strlen(s);
+	if (start >= s_len)
+		len = 0;
+	else if (len > s_len - start)
+		len = s_len - start;
+	sub_str = malloc((len + 1) * sizeof(*sub_str));
+	if (!sub_str)
 		return (NULL);
 	i = 0;
-	while (i < s_len && ((char *)s)[start + i])
+	while (i < len && ((char *)s)[start + i])
 	{
 		sub_str[i] = ((char *)s)[start + i];
 		i++;
@@ -34,12 +39,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (sub_str);
 }
 /*
-int	main(int argc, char const **argv)
+int	main(void)
 {
-	(void)argc;
-	(void)argv;
-	//printf("%s", ft_substr(argv[1], atoi(argv[2]), (size_t)argv[3]));
-	printf("%s",ft_substr("hola", 0, 18446744073709551615));
+	// printf("%s", ft_substr(argv[1], atoi(argv[2]), (size_t)argv[3]));
+	printf("%s", ft_substr("hola", 4294967295, 0));
 	return (0);
 }*/
-

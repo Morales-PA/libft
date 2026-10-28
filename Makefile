@@ -6,7 +6,7 @@
 #    By: juan <juan@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/20 19:15:21 by juan              #+#    #+#              #
-#    Updated: 2026/10/21 16:16:48 by juan             ###   ########.fr        #
+#    Updated: 2026/10/27 17:52:00 by juan             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS	= ft_isalpha.c \
 		  ft_isprint.c \
 		  ft_strlen.c \
 		  ft_memset.c \
+		  ft_split.c \
 		  ft_bzero.c \
 		  ft_memcpy.c \
 		  ft_memmove.c \

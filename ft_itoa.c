@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorales <jmorales@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juan <juan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 21:12:14 by juan              #+#    #+#             */
-/*   Updated: 2026/10/26 19:40:26 by jmorales         ###   ########.fr       */
+/*   Updated: 2026/10/27 23:42:57 by juan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_itoa(int n)
 		str_len++;
 	}
 	str_n = malloc((str_len + 1) * sizeof(*str_n));
-	if (!str_n)
+	if (str_n == NULL)
 		return (0);
 	str_n[str_len] = '\0';
 	while (str_len > 0)
@@ -37,9 +37,3 @@ char	*ft_itoa(int n)
 	}
 	return (str_n);
 }
-/*
-int	main(void)
-{
-	printf("%s", ft_itoa(1000034));
-}
-*/

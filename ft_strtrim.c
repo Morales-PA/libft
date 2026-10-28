@@ -6,58 +6,67 @@
 /*   By: juan <juan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 19:14:29 by juan              #+#    #+#             */
-/*   Updated: 2026/10/21 03:25:28 by juan             ###   ########.fr       */
+/*   Updated: 2026/10/27 12:50:06 by juan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*allocate_and_populate_str(char const *s1, size_t i, size_t j)
+static int	is_char_in_set(char c, char const *set)
 {
-	char	*str;
-	size_t	k;
+	size_t	i;
 
-	str = malloc(sizeof(char [ft_strlen(s1) - i - j]));
-	if (str == NULL)
-		return (NULL);
-	k = 0;
-	while (k < ft_strlen(s1) - i - j)
+	i = 0;
+	while (set[i])
 	{
-		str[k] = s1[k + i];
-		k++;
+		if (c == set[i])
+			return (1);
+		i++;
 	}
-	return (str);
+	return (0);
+}
+
+static char	*allocate_str(size_t len, size_t start, char *s1)
+{
+	char	*result;
+	size_t	i;
+
+	result = malloc((len + 1) * sizeof(*result));
+	if (result == NULL)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		result[i] = s1[start + i];
+		i++;
+	}
+	result[i] = '\0';
+	return (result);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*new_str;
-	int		is_done;
-	size_t	i;
-	size_t	j;
+	size_t	start;
+	size_t	end;
+	size_t	len;
 
-	is_done = 0;
-	i = 0;
-	while (is_done != 1)
-	{
-		if (s1[i] != *set)
-			is_done = 1;
-		i++;
-	}
-	j = 0;
-	while (is_done != 2)
-	{
-		if (s1[ft_strlen(s1) - 1 - j] != *set)
-			is_done = 2;
-		j++;
-	}
-	new_str = allocate_and_populate_str(s1, i - 1, j - 1);
-	return (new_str);
+	if (s1 == NULL || set == NULL)
+		return (NULL);
+	start = 0;
+	end = ft_strlen(s1);
+	while (s1[start] && is_char_in_set(s1[start], set))
+		start++;
+	while (end > start && is_char_in_set(s1[end - 1], set))
+		end--;
+	len = end - start;
+	return (allocate_str(len, start, (char *)s1));
 }
-/*#include <stdio.h>
-int main(void)
+/*
+#include <stdio.h>
+
+int	main(void)
 {
-	char *x = "a**Buenas shavales**";
-	printf("%s",ft_strtrim(x,"a"));
-	return 0;
-}*/
+	printf("%s", ft_strtrim("ab cd  f    ", " "));
+	return (0);
+}
+*/
