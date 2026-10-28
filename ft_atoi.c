@@ -6,39 +6,35 @@
 /*   By: jmorales <jmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 19:41:17 by jmorales          #+#    #+#             */
-/*   Updated: 2026/10/26 19:20:07 by jmorales         ###   ########.fr       */
+/*   Updated: 2026/10/28 15:18:19 by jmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+int	ft_atoi(const char *str)
 {
-	int	accumulator;
-	int	is_negative;
-	int	i;
+	int					i;
+	int					sign;
+	unsigned long int	result;
 
-	accumulator = 0;
-	is_negative = 0;
 	i = 0;
-	if (nptr[i] == '-')
+	sign = 1;
+	result = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-')
 	{
-		is_negative = 1;
+		sign = -1;
 		i++;
 	}
-	while (((char *)nptr)[i])
+	else if (str[i] == '+')
+		i++;
+	while (ft_isdigit(str[i]))
 	{
-		accumulator = accumulator * 10 + (((char *)nptr)[i] - '0');
+		result *= 10;
+		result += str[i] - '0';
 		i++;
 	}
-	if (is_negative)
-		accumulator *= -1;
-	return (accumulator);
+	return (result * sign);
 }
-/*#include <stdio.h>
-int	main(int argc, char const *argv[])
-{
-	(void)argc;
-	printf("%d", ft_atoi(argv[1]));
-	return (0);
-}*/

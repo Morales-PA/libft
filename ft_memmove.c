@@ -6,7 +6,7 @@
 /*   By: jmorales <jmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/21 02:32:50 by juan              #+#    #+#             */
-/*   Updated: 2026/10/26 19:19:47 by jmorales         ###   ########.fr       */
+/*   Updated: 2026/10/28 17:22:22 by jmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
+	if (dst == NULL && src == NULL)
+		return (NULL);
 	if (dst < src)
 		return (ft_memcpy(dst, src, len));
 	while (len > 0)

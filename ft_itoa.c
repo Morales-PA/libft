@@ -3,37 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan <juan@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jmorales <jmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 21:12:14 by juan              #+#    #+#             */
-/*   Updated: 2026/10/27 23:42:57 by juan             ###   ########.fr       */
+/*   Updated: 2026/10/28 18:59:20 by jmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static size_t	size_alloc(long n)
+{
+	size_t	size;
+
+	size = 2;
+	if (n < 0)
+	{
+		size++;
+		n = -n;
+	}
+	while (n / 10 != 0)
+	{
+		size++;
+		n /= 10;
+	}
+	return (size);
+}
+
 char	*ft_itoa(int n)
 {
-	long	temp_n;
-	int		str_len;
-	char	*str_n;
+	size_t	size;
+	int		i;
+	char	*res;
+	long	nlong;
 
-	str_len = 1;
-	temp_n = n;
-	while (temp_n / 10)
+	nlong = n;
+	size = size_alloc(nlong);
+	res = malloc(sizeof(char) * size);
+	if (!res)
+		return (NULL);
+	if (nlong < 0)
 	{
-		temp_n /= 10;
-		str_len++;
+		res[0] = '-';
+		nlong = -nlong;
 	}
-	str_n = malloc((str_len + 1) * sizeof(*str_n));
-	if (str_n == NULL)
-		return (0);
-	str_n[str_len] = '\0';
-	while (str_len > 0)
+	res[size - 1] = '\0';
+	i = size - 2;
+	while (nlong / 10 != 0)
 	{
-		str_n[str_len - 1] = (n % 10) + '0';
-		n /= 10;
-		str_len--;
+		res[i] = nlong % 10 + 48;
+		nlong /= 10;
+		i--;
 	}
-	return (str_n);
+	res[i] = nlong % 10 + 48;
+	return (res);
 }
