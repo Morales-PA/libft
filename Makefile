@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jmorales <jmorales@student.42.fr>          +#+  +:+       +#+         #
+#    By: juan <juan@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/20 19:15:21 by juan              #+#    #+#              #
-#    Updated: 2026/10/28 15:19:49 by jmorales         ###   ########.fr        #
+#    Updated: 2026/10/29 15:14:46 by juan             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
 
-CC		= gcc
+CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
 AR		= ar rcs
 RM		= rm -f

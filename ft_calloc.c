@@ -6,7 +6,7 @@
 /*   By: juan <juan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 18:43:35 by jmorales          #+#    #+#             */
-/*   Updated: 2026/10/24 19:02:11 by juan             ###   ########.fr       */
+/*   Updated: 2026/10/29 14:00:34 by juan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*temp;
 
+	if (nmemb == 0 || size == 0)
+		return (malloc(0));
+	if (nmemb > SIZE_MAX / size)
+		return (NULL);
 	temp = malloc(nmemb * size);
 	if (temp == NULL)
 		return (NULL);

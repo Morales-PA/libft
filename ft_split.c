@@ -3,80 +3,99 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmorales <jmorales@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juan <juan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 20:24:46 by juan              #+#    #+#             */
-/*   Updated: 2026/10/28 18:57:19 by jmorales         ###   ########.fr       */
+/*   Updated: 2026/10/29 18:33:38 by juan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	**populate_array(int start, int end, char const *s_ptr,
-		int str_amount, char **str_array)
+static int	word_len(char const *s, char c)
 {
-	char	**a;
-	int		i;
-	int		j;
+	int	len;
 
-	a = malloc((str_amount + 1) * sizeof(*a));
-	if (a == NULL)
-		return (NULL);
+	len = 0;
+	while (s[len] && s[len] != c)
+		len++;
+	return (len);
+}
+
+static void	free_array(char **arr, int count)
+{
+	int	i;
+
 	i = 0;
-	while (i < str_amount - 1)
+	while (i < count)
 	{
-		a[i] = str_array[i];
+		free(arr[i]);
 		i++;
 	}
-	a[i] = malloc((end - start + 1) * sizeof(**a));
-	if (a[i] == NULL)
+	free(arr);
+}
+
+static char	**add_word(char **arr, int count, char const *s, int len)
+{
+	char	**new_arr;
+	char	*word;
+	int		i;
+
+	word = ft_substr(s, 0, len);
+	new_arr = malloc((count + 2) * sizeof(*new_arr));
+	if (word == NULL || new_arr == NULL)
 	{
-		free(a);
+		free(word);
+		free(new_arr);
+		free_array(arr, count);
 		return (NULL);
 	}
-	j = 0;
-	while (j < end - start)
+	i = 0;
+	while (i < count)
 	{
-		a[i][j] = s_ptr[start + j];
-		j++;
+		new_arr[i] = arr[i];
+		i++;
 	}
-	a[i][j] = '\0';
-	a[str_amount] = NULL;
-	free(str_array);
-	return (a);
+	new_arr[count] = word;
+	new_arr[count + 1] = NULL;
+	free(arr);
+	return (new_arr);
+}
+
+static char	**fill_array(char **arr, char const *s, char c)
+{
+	int	count;
+	int	i;
+	int	len;
+
+	count = 0;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == c)
+			i++;
+		else
+		{
+			len = word_len(s + i, c);
+			arr = add_word(arr, count, s + i, len);
+			if (arr == NULL)
+				return (NULL);
+			count++;
+			i += len;
+		}
+	}
+	return (arr);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**str_array;
-	int		str_amount;
-	int		i;
-	int		j;
+	char	**arr;
 
 	if (s == NULL)
 		return (NULL);
-	str_array = malloc(sizeof(*str_array));
-	if (str_array == NULL)
+	arr = malloc(sizeof(*arr)); 
+	if (arr == NULL)
 		return (NULL);
-	str_array[0] = NULL;
-	str_amount = 0;
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] != c)
-		{
-			j = 0;
-			while (s[i + j] && s[i + j] != c)
-				j++;
-			str_array = populate_array(i, i + j, s,
-					str_amount + 1, str_array);
-			if (str_array == NULL)
-				return (NULL);
-			str_amount++;
-			i += j;
-		}
-		else
-			i++;
-	}
-	return (str_array);
+	arr[0] = NULL;
+	return (fill_array(arr, s, c));
 }
