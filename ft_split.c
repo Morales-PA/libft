@@ -6,7 +6,7 @@
 /*   By: juan <juan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 20:24:46 by juan              #+#    #+#             */
-/*   Updated: 2026/10/29 18:33:38 by juan             ###   ########.fr       */
+/*   Updated: 2026/10/29 19:13:35 by juan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ char	**ft_split(char const *s, char c)
 
 	if (s == NULL)
 		return (NULL);
-	arr = malloc(sizeof(*arr)); 
+	arr = malloc(sizeof(*arr));
 	if (arr == NULL)
 		return (NULL);
 	arr[0] = NULL;
